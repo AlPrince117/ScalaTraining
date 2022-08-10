@@ -1,11 +1,10 @@
-import scala.::
 import scala.annotation.tailrec
 
 object ScalaTraining {
 
   def numberSum(a: Int, b: Int): Int = {
-    if(b == a) a
-    else b + numberSum(a, b -1)
+    if(b == a +1) 0
+    else b - 1 + numberSum(a, b - 1)
   }
 
   def numberSumTailRec(a: Int, b: Int): Int = {
@@ -45,24 +44,30 @@ object ScalaTraining {
     stringLengthAcc(str, 0)
   }
 
-//  def fibonacci(n: Int): Int = {
-//    fibonacci(0) == 0
-//    fibonacci(1) == 1
-//
-//
-//  }
-
-//  def fibonacciTailRec(n: Int): Int = {
-//    @tailrec
-//    def fibonacciAcc(n: Int, acc: Int): Int = {
-//
-//    }
-//  }
-
-
-  def prime(num: Int): Int = {
-
+  def fibonacci(n: Int): Int = {
+    if (n == 0) 0
+    else if (n == 1) 1
+    else fibonacci(n-1) + fibonacci(n-2)
   }
+
+  def fibonacciTailRec(n: Int): Int = {
+    @tailrec
+    def fibonacciAcc(n: Int, acc1: Int, acc2: Int): Int = {
+      if (n == 0) 0
+      else if (n == 1) 1
+      else fibonacciAcc(n-1,acc1 ,  acc1+ acc2)
+    }
+    fibonacciAcc(n, 0, 1)
+  }
+
+
+//  def prime(num: Int): Int = {
+//
+//  }
+
+//  def countCharacters(s: String): Map[Char, Int] = {
+//
+//  }
 
 
 
@@ -72,14 +77,15 @@ object ScalaTraining {
 
   def main(args: Array[String]): Unit ={
 //    println("hello Me")
-//    println(numberSum(5, 7))
+//    println(numberSum(3, 5))
 //    println(numberSumTailRec(5, 7))
 //    println(concat("hello", 7))
 //    println(concatTailRec("hello", 3))
 //    println(stringLengthTailRec("something"))
 //    println(stringLength("something"))
-    println(fibonacci(5))
-//    println("hello".drop(4))
+    println(fibonacci(10))
+    println(fibonacciTailRec(10))
+//    println(fibonacciTailRec(5))
   }
 }
 
